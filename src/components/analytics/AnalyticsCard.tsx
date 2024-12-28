@@ -27,11 +27,14 @@ export default function AnalyticsCard({
   color,
   loading = false
 }: AnalyticsCardProps) {
+  const gradientClasses = `${colorMap[color].split(' ')[0]} ${colorMap[color].split(' ')[1]}`;
+
   return (
     <div className="relative group">
-      <div className="absolute -inset-0.5 bg-gradient-to-r opacity-75 blur-sm transition duration-300 group-hover:opacity-100 rounded-xl"
-           style={{ background: `linear-gradient(to right, var(--tw-gradient-stops))` }}
-           className={colorMap[color].split(' ')[0] + ' ' + colorMap[color].split(' ')[1]} />
+      <div 
+        className={`absolute -inset-0.5 bg-gradient-to-r opacity-[0.05] blur-sm transition duration-300 group-hover:opacity-[0.1] rounded-xl ${gradientClasses}`}
+        style={{ background: 'linear-gradient(to right, var(--tw-gradient-stops))' }}
+      />
       <div className="relative bg-white p-6 rounded-xl">
         <div className="flex items-center justify-between mb-4">
           <div className={`p-3 rounded-lg ${colorMap[color].split(' ')[2]} ${colorMap[color].split(' ')[3]}`}>
