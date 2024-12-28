@@ -1,0 +1,16 @@
+{
+  "name": "LiEnrich",
+  "short_name": "LiEnrich",
+  "description": "LinkedIn Data Enrichment Tool",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4F46E5",
+  "icons": [
+    {
+      "src": "/assets/logos/light-logo.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    }
+  ]
+}
