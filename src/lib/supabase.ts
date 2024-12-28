@@ -1,9 +1,12 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from '../types/supabase';
-import { config } from '../config/auth';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://wttwdqxijxvzylavmsrw.supabase.co';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind0dHdkcXhpanh2enlsYXZtc3J3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM0MjY1MjksImV4cCI6MjA0OTAwMjUyOX0.SnP-JfIMCPs_GRkSoc-Kyr_Gqblqh7gwI4YdBTNWb0E';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error('Missing Supabase environment variables');
+}
 
 export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
   auth: {
@@ -36,9 +39,6 @@ export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
       }
     },
     storageKey: 'supabase.auth.token',
-    redirectTo: 'https://app.lienrich.com/auth',
-    providers: ['google'],
-    identityTokens: config.identityTokens,
     debug: import.meta.env.DEV
   }
 });

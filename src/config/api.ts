@@ -1,5 +1,6 @@
 export const API_CONFIG = {
-  RAPID_API_KEY: '9f13a5cfaamshb271368a8bcc9a0p1cfafdjsn6589ee78c3a3',
-  RAPID_API_HOST: 'linkedin-data-api.p.rapidapi.com',
-  BASE_URL: 'https://linkedin-data-api.p.rapidapi.com'
+  RAPID_API_KEY: import.meta.env.VITE_RAPID_API_KEY,
+  RAPID_API_HOST: import.meta.env.VITE_RAPID_API_HOST,
+  BASE_URL: import.meta.env.VITE_RAPID_API_BASE_URL,
+  HERE_API_KEY: import.meta.env.VITE_HERE_API_KEY
 };
