@@ -2,19 +2,18 @@ import React, { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { LogIn, Loader2 } from 'lucide-react';
 import FloatingLabelInput from './FloatingLabelInput';
-import SocialLoginButtons from './SocialLoginButtons';
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | undefined>();
   const { signIn } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
+    setError(undefined);
     setLoading(true);
 
     try {
@@ -33,17 +32,6 @@ export default function LoginForm() {
         <p className="mt-2 text-sm text-gray-600">
           Sign in to your account to continue
         </p>
-      </div>
-
-      <SocialLoginButtons />
-
-      <div className="relative">
-        <div className="absolute inset-0 flex items-center">
-          <div className="w-full border-t border-gray-200" />
-        </div>
-        <div className="relative flex justify-center text-sm">
-          <span className="px-2 bg-white text-gray-500">Or continue with</span>
-        </div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">

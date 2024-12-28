@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
-import { UserPlus, Loader2, Check } from 'lucide-react';
+import { UserPlus, Loader2 } from 'lucide-react';
 import FloatingLabelInput from './FloatingLabelInput';
 import PasswordStrengthIndicator from './PasswordStrengthIndicator';
 import { toast } from '../../utils/toast';
-import SocialLoginButtons from './SocialLoginButtons';
 
 export default function SignUpForm() { 
   const [email, setEmail] = useState('');
@@ -12,12 +11,12 @@ export default function SignUpForm() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | undefined>();
   const { signUp } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
+    setError(undefined);
     
     // Validate inputs
     if (!email || !password || !confirmPassword) {
@@ -66,17 +65,6 @@ export default function SignUpForm() {
         </p>
       </div>
 
-      <SocialLoginButtons />
-
-      <div className="relative">
-        <div className="absolute inset-0 flex items-center">
-          <div className="w-full border-t border-gray-200" />
-        </div>
-        <div className="relative flex justify-center text-sm">
-          <span className="px-2 bg-white text-gray-500">Or continue with</span>
-        </div>
-      </div>
-
       <form onSubmit={handleSubmit} className="space-y-6">
         <FloatingLabelInput
           id="email"
@@ -91,15 +79,15 @@ export default function SignUpForm() {
 
         <div className="space-y-4">
           <FloatingLabelInput
-          id="password"
-          label="Password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          minLength={6}
-          autoComplete="new-password"
-        />
+            id="password"
+            label="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            minLength={6}
+            autoComplete="new-password"
+          />
           <PasswordStrengthIndicator password={password} />
         </div>
 
