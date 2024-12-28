@@ -3,7 +3,7 @@ import { Home, LayoutGrid, BarChart2, Cable, Settings, Users, CreditCard } from 
 import { Link, useLocation } from 'react-router-dom';
 import Logo from './Logo';
 
-const COLLAPSED_WIDTH = '74px';
+const COLLAPSED_WIDTH = '70px';
 const EXPANDED_WIDTH = '256px';
 
 const mainMenuItems = [
