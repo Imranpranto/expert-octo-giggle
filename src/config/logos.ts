@@ -1,27 +1,27 @@
 export const LOGO_CONFIG = {
   variants: {
-    light: 'https://wttwdqxijxvzylavmsrw.supabase.co/storage/v1/object/public/assets/lienrich-icon.png?t=2024-12-15T06%3A02%3A43.076Z',
-    dark: 'https://wttwdqxijxvzylavmsrw.supabase.co/storage/v1/object/public/assets/lienrich-icon.png?t=2024-12-15T06%3A02%3A43.076Z'
+    light: 'https://wttwdqxijxvzylavmsrw.supabase.co/storage/v1/object/public/assets/lienrich-logo.png',
+    dark: 'https://wttwdqxijxvzylavmsrw.supabase.co/storage/v1/object/public/assets/lienrich-logo.png'
   },
   sizes: {
     small: {
-      width: 32,
-      height: 32
+      width: 28,
+      height: 28
     },
     medium: {
-      width: 48,
-      height: 48
+      width: 36,
+      height: 36
     },
     large: {
-      width: 64,
-      height: 64
+      width: 48,
+      height: 48
     }
   },
   contexts: {
-    header: 'medium',
-    sidebar: 'small',
-    auth: 'large',
-    marketing: 'large'
+    header: 'medium' as const,
+    sidebar: 'small' as const,
+    auth: 'large' as const,
+    marketing: 'large' as const
   },
   defaults: {
     size: 'medium',

@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Home, LayoutGrid, BarChart2, Cable, Settings, Users, CreditCard } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import WebhookCard from './sidebar/WebhookCard';
 import Logo from './Logo';
 
-const COLLAPSED_WIDTH = '64px';
+const COLLAPSED_WIDTH = '74px';
 const EXPANDED_WIDTH = '256px';
 
 const mainMenuItems = [
@@ -42,7 +41,6 @@ export default function Sidebar() {
         <Link to="/" className="flex items-center justify-center">
           <Logo 
             theme="dark" 
-            variant={isExpanded ? 'default' : 'small'} 
             showText={isExpanded}
           />
         </Link>
@@ -50,7 +48,7 @@ export default function Sidebar() {
       <nav className="flex-1 flex flex-col px-2 py-4">
         {/* Main menu items */}
         <ul className="space-y-2">
-          {mainMenuItems.map((item, index) => (
+          {mainMenuItems.map(item => (
             <li key={item.label}>
               <Link
                 to={item.to}
@@ -73,7 +71,7 @@ export default function Sidebar() {
         
         {/* Bottom menu items */}
         <ul className="mt-auto pt-4 space-y-2 border-t border-gray-800">
-          {bottomMenuItems.map((item, index) => (
+          {bottomMenuItems.map(item => (
             <li key={item.label}>
               <Link
                 to={item.to}

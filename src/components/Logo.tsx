@@ -2,15 +2,13 @@ import React from 'react';
 import { LOGO_CONFIG, LogoSize, LogoVariant } from '../config/logos';
 
 interface LogoProps {
-  variant?: 'default' | 'small';
   theme?: 'light' | 'dark';
   showText?: boolean;
 }
 
-export default function Logo({ variant = 'default', theme = 'light', showText = true }: LogoProps) {
-  const isSmall = variant === 'medium';
+export default function Logo({ theme = 'light', showText = true }: LogoProps) {
   const isDark = theme === 'dark';
-  const size: LogoSize = isSmall ? 'small' : 'medium';
+  const size: LogoSize = 'medium';  // Always use medium size for consistency
   const logoVariant: LogoVariant = isDark ? 'dark' : 'light';
   const { width, height } = LOGO_CONFIG.sizes[size];
 
@@ -30,7 +28,7 @@ export default function Logo({ variant = 'default', theme = 'light', showText = 
         </div>
       </div>
       {showText && <div className="flex items-center gap-2">
-        <span className={`font-bold ${isSmall ? 'text-lg' : 'text-xl'} 
+        <span className={`font-bold text-xl
           ${isDark ? 'text-white' : 'text-gray-900'} truncate`}>
           LiEnrich
         </span>
