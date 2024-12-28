@@ -3,7 +3,7 @@ import { supabase } from '../lib/supabase';
 import { Database } from '../types/supabase';
 import axios from 'axios';
 
-const API_URL = 'https://api.heyreach.io/api/public';
+const API_URL = import.meta.env.VITE_HEYREACH_API_URL;
 const CACHE_KEY = 'heyreach_lists_cache';
 const CACHE_DURATION = 60 * 60 * 1000; // 1 hour in milliseconds
 
@@ -25,14 +25,15 @@ export async function validateApiKey(apiKey: string, name: string): Promise<{ is
         throw new Error('User not authenticated');
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const insertData: Database['public']['Tables']['heyreach_api_keys']['Insert'][] = [{
+        user_id: userData.user.id,
+        name,
+        api_key: apiKey
+      }];
+
       const { error } = await supabase
         .from('heyreach_api_keys')
-        .insert([{
-          user_id: userData.user.id,
-          name,
-          api_key: apiKey
-        }] as any);
+        .insert(insertData);
 
       if (error) {
         if (error.code === '23505') { // Unique constraint violation

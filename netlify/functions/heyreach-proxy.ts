@@ -1,7 +1,7 @@
 import { Handler } from '@netlify/functions';
 import fetch from 'node-fetch';
 
-const HEYREACH_API = 'https://api.heyreach.io/api/public';
+const HEYREACH_API = process.env.HEYREACH_API_URL || 'https://api.heyreach.io/api/public';
 
 const handler: Handler = async (event) => {
   // Set CORS headers
@@ -40,7 +40,7 @@ const handler: Handler = async (event) => {
         'Content-Type': 'application/json',
         'Accept': 'text/plain'
       },
-      body: event.body
+      body: event.body || undefined
     });
 
     const data = await response.text();
